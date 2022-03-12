@@ -1,0 +1,15 @@
+{% extends 'baseC.html' %}
+{% block content %}
+{% load static %}
+<center>
+    <br>
+    <center><img src="{% static 'user/media/logo.png' %}" alt="index" width="200" height="150" /></center>
+    <br>
+<title>Show Customer</title>
+
+<center><a href="{% url 'load_customer_form' %}"><input style="background: light gray; font-size: 2rem;
+color: black; padding:1%;" type="submit" value="Add Customer" ></a></center>
+<br>
+    <center><a href="{% url 'customers' %}"><input style="background: light gray; font-size: 2rem;
+color: black; padding:1%;" type="submit" value="Show Customer" ></a></center>
+{% endblock %}

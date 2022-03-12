@@ -1,0 +1,36 @@
+{% extends 'baseO.html' %}
+{% block content %}
+{% load static%}
+<br>
+<center><img src="{% static 'user/media/logo.png' %}" alt="index" width="200" height="150" /></center>
+<br>
+<br>
+<table class="table table-striped">
+
+    <tr>
+    <th>ID</th>
+    <th>Product</th>
+    <th>Customer</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Edit</th>
+    <th>Delete</th>
+    </tr>
+
+    {% for order in order %}
+        <tr>
+            <td>{{order.id}}</td>
+            <td>{{order.product.name}}</td>
+            <td>{{order.customer.first_name}}</td>
+            <td>{{order.ord_quantity}}</td>
+            <td>{{order.ord_price}}</td>
+            <td>
+                <a href="editO/{{order.id}}">Edit</a>
+            </td>
+            <td>
+                <a href="deleteO/{{order.id}}">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

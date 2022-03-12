@@ -1,0 +1,27 @@
+{% extends 'baseC.html' %}
+{% block content %}
+
+{% load static %}
+<center>
+    <br>
+    <center><img src="{% static 'user/media/logo.png' %}" alt="index" width="200" height="150" /></center>
+    <br>
+<h1>Add Customer</h1>
+<form action="addC" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <label>First Name:</label>
+  <div>{{form.first_name}}</div>
+    <br>
+  <label>Last Name:</label>
+  <div>{{form.last_name}}</div>
+    <br>
+  <label>Address:</label>
+  <div>{{form.address}}</div>
+    <br>
+  <label>Phone Number:</label>
+  <div>{{form.phone_num}}</div>
+    <br>
+  <div><button type="submit">Add</button> </div>
+</form>
+    </center>
+{% endblock %}

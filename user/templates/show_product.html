@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static%}
+<br>
+<center><img src="{% static 'user/media/logo.png' %}" alt="index" width="200" height="150" /></center>
+<br>
+<center>
+    <form method="post" action="/search">
+        {% csrf_token %}
+        <td>
+            <td>
+                <input name="name">
+            </td>
+            <td><button type="submit">Search</button> </td>
+        </td>
+    </form>
+    </center>
+<br>
+<table class="table table-striped">
+
+    <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Description</th>
+    <th>Edit</th>
+    <th>Delete</th>
+    </tr>
+
+    {% for product in product %}
+        <tr>
+            <td>{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.pro_price}}</td>
+            <td>{{product.pro_quantity}}</td>
+            <td>{{product.description}}</td>
+            <td>
+                <a href="edit/{{product.id}}">Edit</a>
+            </td>
+            <td>
+                <a href="delete/{{product.id}}">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

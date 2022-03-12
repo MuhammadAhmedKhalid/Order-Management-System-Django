@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<center>
+    <br>
+    <center><img src="{% static 'user/media/logo.png' %}" alt="index" width="200" height="150" /></center>
+    <br>
+<title>Show Product</title>
+
+<center><a href="{% url 'load_product_form' %}"><input style="background: light gray; font-size: 2rem;
+color: black; padding:1%;" type="submit" value="Add Product" ></a></center>
+<br>
+    <center><a href="{% url 'products' %}"><input style="background: light gray; font-size: 2rem;
+color: black; padding:1%;" type="submit" value="Show Product" ></a></center>
+{% endblock %}

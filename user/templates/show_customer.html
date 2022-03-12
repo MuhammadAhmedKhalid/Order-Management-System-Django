@@ -1,0 +1,47 @@
+{% extends 'baseC.html' %}
+{% block content %}
+{% load static%}
+<br>
+<center><img src="{% static 'user/media/logo.png' %}" alt="index" width="200" height="150" /></center>
+<br>
+<center>
+    <form method="post" action="/searchC">
+        {% csrf_token %}
+        <td>
+            <td>
+                <input name="name">
+            </td>
+            <td><button type="submit">Search</button> </td>
+        </td>
+    </form>
+    </center>
+<br>
+<table class="table table-striped">
+
+    <tr>
+    <th>ID</th>
+    <th>First Name</th>
+        <th>Last Name</th>
+    <th>Address</th>
+    <th>Phone Number</th>
+    <th>Edit</th>
+    <th>Delete</th>
+    </tr>
+
+    {% for customer in customer %}
+        <tr>
+            <td>{{customer.id}}</td>
+            <td>{{customer.first_name}}</td>
+            <td>{{customer.last_name}}</td>
+            <td>{{customer.address}}</td>
+            <td>{{customer.phone_num}}</td>
+            <td>
+                <a href="editC/{{customer.id}}">Edit</a>
+            </td>
+            <td>
+                <a href="deleteC/{{customer.id}}">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

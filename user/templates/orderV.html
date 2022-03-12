@@ -1,0 +1,15 @@
+{% extends 'baseO.html' %}
+{% block content %}
+{% load static %}
+<center>
+    <br>
+    <center><img src="{% static 'user/media/logo.png' %}" alt="index" width="200" height="150" /></center>
+    <br>
+<title>Show Order</title>
+
+<center><a href="{% url 'load_order_form' %}"><input style="background: light gray; font-size: 2rem;
+color: black; padding:1%;" type="submit" value="Add Order" ></a></center>
+<br>
+    <center><a href="{% url 'orders' %}"><input style="background: light gray; font-size: 2rem;
+color: black; padding:1%;" type="submit" value="Show Order" ></a></center>
+{% endblock %}

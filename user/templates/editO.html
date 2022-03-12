@@ -1,0 +1,52 @@
+{% extends 'baseO.html' %}
+{% block content %}
+<form method="post" action="/updateO/{{order.id}}">
+    {% csrf_token %}
+    <table>
+        <tr>
+
+        <td>
+            <label>ID: </label></td>
+        <td>
+        <input name="id" required value="{{order.id}}">
+        </td>
+    </tr>
+    <tr>
+
+        <td>
+            <label>Product: </label></td>
+        <td>
+        <input name="product" required value="{{order.product}}">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Customer: </label>
+            </td><td>
+        <input name="customer" required value="{{order.customer}}">
+        </td>
+    </tr>
+    <tr>
+
+        <td>
+            <label>Quantity: </label>
+            </td><td>
+        <input name="ord_quantity" required  value="{{order.ord_quantity}}">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Price: </label>
+            </td><td>
+        <input name="ord_price" required value="{{order.ord_price}}">
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+        <button type="submit">Update</button>
+        </td>
+    </tr>
+    </table>
+</form>
+{% endblock %}

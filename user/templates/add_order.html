@@ -1,0 +1,27 @@
+{% extends 'baseO.html' %}
+{% block content %}
+
+{% load static %}
+<center>
+    <br>
+    <center><img src="{% static 'user/media/logo.png' %}" alt="index" width="200" height="150" /></center>
+    <br>
+<h1>Add Order</h1>
+<form action="addO" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <label>Product:</label>
+  <div>{{form.product}}</div>
+    <br>
+  <label>Customer:</label>
+  <div>{{form.customer}}</div>
+    <br>
+  <label>Quantity:</label>
+  <div>{{form.ord_quantity}}</div>
+    <br>
+  <label>Price:</label>
+  <div>{{form.ord_price}}</div>
+    <br>
+  <div><button type="submit">Add</button> </div>
+</form>
+    </center>
+{% endblock %}

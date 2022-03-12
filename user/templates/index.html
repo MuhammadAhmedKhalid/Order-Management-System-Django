@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+{% load static %}
+{% load crispy_forms_tags %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="project">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+  <meta name="author" content="vinayak sharma">
+
+  <title>{{title}}</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}" />
+
+  {% if messages %}
+  {% for message in messages %}
+
+  <script>
+    alert("{{ message }}");
+  </script>
+
+  {% endfor %}
+  {% endif %}
+
+  <!--_______________________________________________-->
+
+
+
+</head>
+
+<body class="container-fluid">
+
+
+  <header class="row">
+
+    <!-- navbar-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" class="styleheader" href="{% url 'index' %}">OSM</a>
+
+        </div>
+        <div class="collapse navbar-collapse" id="mainNavBar">
+          <ul class="nav navbar-nav navbar-right" >
+
+            {% if user.is_authenticated %}
+<!--            <center><h3>Welcome!</h3></center>-->
+<!--            <li><h3 style="color:white" align="left"> <span class="glyphicon"></span> Welcome &nbsp; </h3></li>-->
+<!--            <li><h3 style="color:white" >Welcome</h3></li>-->
+<!--            <center><li><h3>Welcome</h3></li></center>-->
+            <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> &nbsp; Logout</a></li>
+            {% else %}
+
+<!--            <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> &nbsp; Sign up</a></li>-->
+<!--            <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> &nbsp; Log in</a></li>-->
+            {% endif %}
+
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+  <br/>
+  <br>
+  <br>
+  <div class="row">
+    {% block start %}
+<!--    <link rel="stylesheet" type="text/css" href="{% static 'user/site.css' %}" />-->
+    {% if user.is_authenticated %}
+    <center><img src="{% static 'user/media/logo.png' %}" alt="index" width="200" height="150" /></center>
+    <br>
+     <center>
+    <table>
+
+      <tr>
+        <td>
+    <a href="{% url 'show_product_view' %}"><input style="background: light gray; font-size: 2rem; color: black;
+    padding:1%;" type="submit" value="Product" ></a>
+        </td>
+        <td> <h1>&nbsp;</h1> </td>
+        <td>
+          <a href="{% url 'show_customer_view' %}"><input style="background: light gray; font-size: 2rem; color: black;
+    padding:1%;" type="submit" value="Customer" ></a>
+        </td>
+        <td> <h1>&nbsp;</h1> </td>
+        <td>
+          <a href="{% url 'show_order_view' %}"><input style="background: light gray; font-size: 2rem; color: black;
+    padding:1%;" type="submit" value="Order" ></a>
+        </td>
+      </tr>
+
+    </table>
+    </center>
+<!--    <center><a href="{% url 'show_product_view' %}"><input style="background: light gray; font-size: 2rem;-->
+<!--    color: black; padding:1%;" type="submit" value="Product" ></a></center>-->
+<!--    <center><a href="{% url 'show_product_view' %}"><input style="background: light gray; font-size: 2rem;-->
+<!--    color: black; padding:1%;" type="submit" value="Customer" ></a></center>-->
+<!--    <center><a href="{% url 'show_product_view' %}"><input style="background: light gray; font-size: 2rem;-->
+<!--    color: black; padding:1%;" type="submit" value="Order" ></a></center>-->
+
+    {% else %}
+    <center><img src="{% static 'user/media/logo.png' %}" alt="index" width="250" height="200" /></center>
+    <br>
+<!--    <center><h1>OSM</h1></center>-->
+    <br>
+    <center>
+    <table>
+
+      <tr>
+        <td>
+    <a href="{% url 'login' %}"><input style="background: light gray; font-size: 2rem; color: black; padding:1%;"
+                                               type="submit" value="Log in" ></a>
+
+        </td>
+        <td> <h1>&nbsp;</h1> </td>
+        <td>
+          <a href="{% url 'register' %}"><input style="background: light gray; font-size: 2rem; color: black
+          ;padding:1%;" type="submit" value="Sign up" ></a>
+        </td>
+      </tr>
+
+    </table>
+    </center>
+    {% endif %}
+    {% endblock %}
+  </div>
+</body>
+
+</html>
